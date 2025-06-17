@@ -7,10 +7,17 @@ These scripts range from harmless pranks to nefarious red team tools. For educat
 
 **These payloads are all for Windows systems**
 
+<div align=center>
+
+![beigebanner](https://github.com/user-attachments/assets/5f1a94e2-fb08-47a5-bac0-dee9ab28fd5f)
+
 <div width="100%" align="center">
-<h2 align="center"> Join The Club! </h2>
- 
-[![Discord](https://img.icons8.com/color/48/000000/discord-logo.png)](https://discord.gg/QjKMHkdjFc)
+<h2 align="center"> Join The Crew! </h2>
+
+<div align=center>
+
+[![Join our Discord server!](https://invidget.switchblade.xyz/QjKMHkdjFc)](https://discord.gg/QjKMHkdjFc)
+
 </div>
 
 **If you want to learn more about the code, most of these scripts are in powershell format here**
