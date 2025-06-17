@@ -19,6 +19,8 @@ These scripts range from harmless pranks to nefarious red team tools. For educat
 [![Join our Discord server!](https://invidget.switchblade.xyz/QjKMHkdjFc)](https://discord.gg/QjKMHkdjFc)
 
 </div>
+</div>
+</div>
 
 **If you want to learn more about the code, most of these scripts are in powershell format here**
 
