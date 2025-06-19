@@ -15,8 +15,10 @@ $memoryStream = New-Object IO.MemoryStream($imageBytes, 0, $imageBytes.Length)
 $memoryStream.Write($imageBytes, 0, $imageBytes.Length);
 $image = [System.Drawing.Image]::FromStream($memoryStream)
 
-# shortened URL Detection
-if ($dc.Ln -ne 121){Write-Host "Shortened Webhook URL Detected.." ; $dc = (irm $dc).url}
+$dc = "$dc"
+if ($dc.Length -lt 120){
+	$dc = ("https://discord.com/api/webhooks/" + "$dc")
+}
 
 $setupwindow = New-Object System.Windows.Forms.Form
 $setupwindow.ClientSize = '600,450'
