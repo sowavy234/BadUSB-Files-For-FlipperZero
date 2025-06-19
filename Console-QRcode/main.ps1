@@ -19,10 +19,6 @@ Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
 [Console]::BackgroundColor = "Black"
 
-$wshell = New-Object -ComObject wscript.shell 
-$wshell.AppActivate("Powershell.exe")
-$wshell.SendKeys("{F11}")
-
 cls
 
 function Generate-QRCodeURL {
