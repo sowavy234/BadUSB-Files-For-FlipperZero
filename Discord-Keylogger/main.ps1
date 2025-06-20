@@ -66,7 +66,6 @@ $KeypressThreshold = [TimeSpan]::FromSeconds(10)
 While ($true){
   $keyPressed = $false
     try{
-      # Start a loop that checks the time since last activity before message is sent
       while ($LastKeypressTime.Elapsed -lt $KeypressThreshold) {
       # Start the loop with 30 ms delay between keystate check
       Start-Sleep -Milliseconds 30
