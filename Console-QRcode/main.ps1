@@ -10,7 +10,6 @@ USAGE
 3. Choose invert colors or not
 4. Check console for results
 #>
-
 $URL = "$text"
 $highC = 'y'
 $inverse = 'n'
@@ -25,11 +24,10 @@ function Generate-QRCodeURL {
     param ([string]$URL,[int]$sizePercentage = 50)
     $EncodedURL = [uri]::EscapeDataString($URL)
     $newSize = [math]::Round((300 * $sizePercentage) / 100)
-    $QRCodeURL = "https://chart.googleapis.com/chart?chs=${newSize}x${newSize}&cht=qr&chl=$EncodedURL"
+    # New working QR code API
+    $QRCodeURL = "https://api.qrserver.com/v1/create-qr-code/?size=${newSize}x${newSize}&data=$EncodedURL"
     return $QRCodeURL
 }
-
-$QRCodeURL = Generate-QRCodeURL -URL $URL
 
 function Download-QRCodeImage {
     param ([string]$QRCodeURL)
@@ -43,23 +41,25 @@ $QRCodeImageFile = Download-QRCodeImage -QRCodeURL $QRCodeURL
 $QRCodeImage = [System.Drawing.Image]::FromFile($QRCodeImageFile)
 $Bitmap = New-Object System.Drawing.Bitmap($QRCodeImage)
 
+# Characters for different contrast and inverse modes
 if (($highC -eq 'n') -and ($inverse -eq 'y')){
     $Chars = @('░', '█')
 }
 elseif (($highC -eq 'n') -and ($inverse -eq 'n')){
     $Chars = @('█', '░')
 }
-
-if (($highC -eq 'y') -and ($inverse -eq 'y')){
-$Chars = @(' ', '█')
+elseif (($highC -eq 'y') -and ($inverse -eq 'y')){
+    $Chars = @(' ', '█')
 }
 elseif (($highC -eq 'y') -and ($inverse -eq 'n')){
-$Chars = @('█', ' ')
+    $Chars = @('█', ' ')
 }
 
+# Render QR code as characters
 for ($y = 0; $y -lt $Bitmap.Height; $y += 2) {
     for ($x = 0; $x -lt $Bitmap.Width; $x++) {
-        $Index = if ($Bitmap.GetPixel($x, $y).ToArgb() -eq -16777216) { 1 } else { 0 }  # Check if the pixel is black or white
+        $pixel = $Bitmap.GetPixel($x, $y)
+        $Index = if ($pixel.R -lt 128 -and $pixel.G -lt 128 -and $pixel.B -lt 128) { 1 } else { 0 }
         Write-Host -NoNewline $Chars[$Index]
     }
     Write-Host
