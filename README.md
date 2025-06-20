@@ -9,8 +9,6 @@ These scripts range from harmless pranks to nefarious red team tools. For educat
 
 <div align=center>
 
-![beigebanner](https://github.com/user-attachments/assets/5f1a94e2-fb08-47a5-bac0-dee9ab28fd5f)
-
 <div width="100%" align="center">
 <h2 align="center"> Join The Crew! </h2>
 
@@ -21,6 +19,13 @@ These scripts range from harmless pranks to nefarious red team tools. For educat
 </div>
 </div>
 </div>
+
+**IMPORTANT NOTE FOR DISCORD WEBHOOKS!**
+
+replace DISCORD_WEBHOOK_HERE with your Discord Webhook Channel and Token ONLY - eg. $dc='1206563651960586035/sNqypsq629XmXpc9TP924Dxeox6qMHDCI5e27qJ3fw4ef34wff4wf_df3aFOY'
+
+This is because Microsoft Defender now blocks any RunPrompt commands containing `https://` or `-W Hidden` and its variations
+
 
 **If you want to learn more about the code, most of these scripts are in powershell format here**
 
