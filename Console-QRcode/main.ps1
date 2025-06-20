@@ -10,7 +10,7 @@ USAGE
 3. Choose invert colors or not
 4. Check console for results
 #>
-$URL = "$text"
+$URL = "$txt"
 $highC = 'y'
 $inverse = 'n'
 
