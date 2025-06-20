@@ -13,7 +13,7 @@ REM for more info goto - https://github.com/beigeworm/PoshCord-C2
 REM some setup for dukie script
 DEFAULT_DELAY 100
 
-REM open powershell (remove "-W H" to show the window)
+REM open powershell
 DELAY 1000
 GUI r
 DELAY 750
