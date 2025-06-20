@@ -2,7 +2,7 @@
 <# ======================== COLSOLE QR CODE GENERATOR ==================================
  
 SYNOPSIS
-Use 'chart.googleapis.com' to create a qrcode then represent the qrcode in the console!
+Use 'api.qrserver.com' to create a qrcode then represent the qrcode in the console!
 
 USAGE
 1. Run script
