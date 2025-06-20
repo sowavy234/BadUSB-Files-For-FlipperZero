@@ -8,7 +8,7 @@ REM Target: Windows 10
 REM some setup for dukie script
 DEFAULT_DELAY 100
 
-REM open powershell (remove -W Hidden to show the window)
+REM open powershell
 DELAY 1000
 GUI r
 DELAY 750
