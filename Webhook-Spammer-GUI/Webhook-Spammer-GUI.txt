@@ -3,10 +3,7 @@ REM Author: @beigeworm
 REM Description: This script creates a GUI for Spamming a webhook with text or an image.
 REM Target: Windows 10
 
-REM some setup for dukie script
-DEFAULT_DELAY 100
-
-REM open powershell (remove "-W H" to show the window)
+REM open powershell
 DELAY 1000
 GUI r
 DELAY 750
