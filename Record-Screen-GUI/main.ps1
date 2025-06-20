@@ -1,6 +1,3 @@
-$Import = '[DllImport("user32.dll")] public static extern bool ShowWindow(int handle, int state);';
-add-type -name win -member $Import -namespace native;
-[native.win]::ShowWindow(([System.Diagnostics.Process]::GetCurrentProcess() | Get-Process).MainWindowHandle, 0);
 
 Add-Type -AssemblyName System.Windows.Forms
 $form = New-Object Windows.Forms.Form
@@ -131,6 +128,9 @@ $startrecord.Font = 'Microsoft Sans Serif,10,style=Bold'
 
 $form.Controls.AddRange(@($Text,$fps,$frBox,$Text2,$sec,$tbox,$Text3,$ofx,$oxBox,$Text4,$ofy,$oyBox,$Text5,$vsBox,$Download,$Check,$startrecord))
 
+$Import = '[DllImport("user32.dll")] public static extern bool ShowWindow(int handle, int state);';
+add-type -name win -member $Import -namespace native;
+[native.win]::ShowWindow(([System.Diagnostics.Process]::GetCurrentProcess() | Get-Process).MainWindowHandle, 0);
 
 $Download.Add_Click{
 $Path = "$env:Temp\ffmpeg.exe"
