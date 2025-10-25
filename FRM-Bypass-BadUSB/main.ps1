@@ -327,7 +327,22 @@ Write-Host "This tool will attempt to bypass Factory Reset Protection on Android
 # Check if running as administrator
 if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
     Write-Host "This script requires administrator privileges for full functionality." -ForegroundColor Red
-    Write-Host "Some features may not work without admin rights." -ForegroundColor Yellow
+    Write-Host "Attempting to restart with elevated privileges..." -ForegroundColor Yellow
+
+    $scriptPath = $MyInvocation.MyCommand.Definition
+    $arguments = $MyInvocation.UnboundArguments
+    $argString = ""
+    if ($arguments.Count -gt 0) {
+        $argString = $arguments -join " "
+    }
+
+    try {
+        Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$scriptPath`" $argString" -Verb RunAs
+        Write-Host "Script restarted with elevated privileges. Exiting current session..." -ForegroundColor Yellow
+    } catch {
+        Write-Host "Failed to restart with elevated privileges. Please run this script as administrator." -ForegroundColor Red
+    }
+    exit
 }
 
 # Show the GUI
